@@ -4,6 +4,7 @@ using DeviceShop.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeviceShop.Core.Migrations
 {
     [DbContext(typeof(DeviceShopContext))]
-    partial class DeviceShopContextModelSnapshot : ModelSnapshot
+    [Migration("20221019231726_start2")]
+    partial class start2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,70 +97,36 @@ namespace DeviceShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5cd4906d-8e4d-4cba-b643-ff9ba5387463",
+                            Id = "aeecea6e-a0de-427f-8218-df9cab48df9a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "75a3b392-afdc-4c8e-be37-d37d50014cf9",
+                            ConcurrencyStamp = "74d545aa-92d7-481d-8d47-c63d0dce581b",
                             Email = "admin@deviceshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DEVICESHOP.COM",
                             NormalizedUserName = "ADMIN@DEVICESHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEERjP42Ik3Dmlll++WxLTLtqYYdQ46at6Jybg1ORFwjcABnMzGR7o2Ox856TE5+7wA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBhiS1HzdQpQkHbF1IY6ox3mOYKit6Zef0lO4XXU1wuq+L7USoQx3Vbx53jJ4ZbGhQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85bf6b2c-fe00-469f-b6ee-b80891abeb54",
+                            SecurityStamp = "92da1d3f-6b9d-499f-8d56-a2c2900da52b",
                             TwoFactorEnabled = false,
                             UserName = "admin@deviceshop.com"
                         },
                         new
                         {
-                            Id = "7a1ec81d-75d7-44f5-9c3e-65e03fe23fcf",
+                            Id = "3d38e9b2-32ec-4103-b1df-fb51a12084c1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8e2d2732-5c0d-41a5-b9a2-f263bfafd3b8",
+                            ConcurrencyStamp = "cdfc563d-d13f-4394-afbf-2aeb01515c81",
                             Email = "user@deviceshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@DEVICESHOP.COM",
                             NormalizedUserName = "USER@DEVICESHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDMHtpQUkyZz9a3qYhGtjTZpkn8wWdTkkYP6EHJdc87n2PBaJ0qy8yoyQL9Ol2B02g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEqd7duW4M56l1Lfi4SsnA+HqanTICzeRsNdc4Ij3D4jEbZ2MkkmgUxAwWmCUReQXA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fc99493c-b445-434f-ab0c-392663e75c37",
+                            SecurityStamp = "c6494313-55f3-4d63-b27b-a4a3de2252a9",
                             TwoFactorEnabled = false,
                             UserName = "user@deviceshop.com"
                         });
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Colour", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ColourTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Colours");
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Companys");
                 });
 
             modelBuilder.Entity("DeviceShop.Models.Device", b =>
@@ -169,18 +137,21 @@ namespace DeviceShop.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DeviceId"), 1L, 1);
 
-                    b.Property<int?>("ColourId")
-                        .HasColumnType("int");
+                    b.Property<string>("Colour")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
+                    b.Property<string>("Company")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GuaranteeId")
-                        .HasColumnType("int");
+                    b.Property<string>("Guarantee")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -198,30 +169,7 @@ namespace DeviceShop.Core.Migrations
 
                     b.HasKey("DeviceId");
 
-                    b.HasIndex("ColourId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("GuaranteeId");
-
                     b.ToTable("Devices");
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Guarantee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("GuaranteeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Guarantees");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -253,15 +201,15 @@ namespace DeviceShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aa5f94e4-df13-47d0-b7e0-10d1a8c46e0f",
-                            ConcurrencyStamp = "220e9c62-9572-4f4b-a6ec-b784a0914a0e",
+                            Id = "6e5e3475-dde5-45ed-a265-6654c7e9a70f",
+                            ConcurrencyStamp = "9bd08490-d0de-46e7-bb8d-64b339b23e9f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "adcbf5c7-2299-4f20-a4a1-a97e200b995c",
-                            ConcurrencyStamp = "0811325f-7a1f-4d7b-b8cc-23ca5b0fd365",
+                            Id = "a75d3a39-a96e-4474-a77e-118d814bdeb1",
+                            ConcurrencyStamp = "740ff016-a976-487b-934f-d0faf4354038",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -358,18 +306,18 @@ namespace DeviceShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "5cd4906d-8e4d-4cba-b643-ff9ba5387463",
-                            RoleId = "aa5f94e4-df13-47d0-b7e0-10d1a8c46e0f"
+                            UserId = "aeecea6e-a0de-427f-8218-df9cab48df9a",
+                            RoleId = "6e5e3475-dde5-45ed-a265-6654c7e9a70f"
                         },
                         new
                         {
-                            UserId = "7a1ec81d-75d7-44f5-9c3e-65e03fe23fcf",
-                            RoleId = "aa5f94e4-df13-47d0-b7e0-10d1a8c46e0f"
+                            UserId = "3d38e9b2-32ec-4103-b1df-fb51a12084c1",
+                            RoleId = "6e5e3475-dde5-45ed-a265-6654c7e9a70f"
                         },
                         new
                         {
-                            UserId = "7a1ec81d-75d7-44f5-9c3e-65e03fe23fcf",
-                            RoleId = "adcbf5c7-2299-4f20-a4a1-a97e200b995c"
+                            UserId = "3d38e9b2-32ec-4103-b1df-fb51a12084c1",
+                            RoleId = "a75d3a39-a96e-4474-a77e-118d814bdeb1"
                         });
                 });
 
@@ -392,21 +340,6 @@ namespace DeviceShop.Core.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Device", b =>
-                {
-                    b.HasOne("DeviceShop.Models.Colour", null)
-                        .WithMany("Devices")
-                        .HasForeignKey("ColourId");
-
-                    b.HasOne("DeviceShop.Models.Company", null)
-                        .WithMany("Devices")
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("DeviceShop.Models.Guarantee", null)
-                        .WithMany("Devices")
-                        .HasForeignKey("GuaranteeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -458,21 +391,6 @@ namespace DeviceShop.Core.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Colour", b =>
-                {
-                    b.Navigation("Devices");
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Company", b =>
-                {
-                    b.Navigation("Devices");
-                });
-
-            modelBuilder.Entity("DeviceShop.Models.Guarantee", b =>
-                {
-                    b.Navigation("Devices");
                 });
 #pragma warning restore 612, 618
         }
