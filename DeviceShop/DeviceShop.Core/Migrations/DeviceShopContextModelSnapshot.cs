@@ -95,33 +95,33 @@ namespace DeviceShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f63b95d5-5982-49ba-b357-33265c8af3bd",
+                            Id = "b9b091ba-c95c-45d2-95c3-4d4c6866c3c0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9b4f6151-4dc9-46bd-bc73-d0fa54990378",
+                            ConcurrencyStamp = "a48c2ea2-f3f8-42b3-a58b-66b9635ffa93",
                             Email = "admin@deviceshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DEVICESHOP.COM",
                             NormalizedUserName = "ADMIN@DEVICESHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPZ9Is/OIIe5Z21nattiaB7g1z21t2dUlzhiID27AkJPDcsyR9jHGB8pAGqe58jEKw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENS/ut7Nj62QM2xTP4mlyCVTWu9y/sdasUD8gYdqG7Dkvl1zZh/A23bA7uVEZ0CBoQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aa060f3e-5560-409e-b4cb-15b1e164e959",
+                            SecurityStamp = "e90bc0fb-499e-4da8-8a24-d0d368a563cf",
                             TwoFactorEnabled = false,
                             UserName = "admin@deviceshop.com"
                         },
                         new
                         {
-                            Id = "7b1310d1-bea0-4650-b3e6-6d417c250595",
+                            Id = "13d72687-46a5-4959-8369-86f7fc765683",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1f5ab1c0-4414-4750-8033-cc328c245676",
+                            ConcurrencyStamp = "c52290b5-244c-4f39-881a-89c947495416",
                             Email = "user@deviceshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@DEVICESHOP.COM",
                             NormalizedUserName = "USER@DEVICESHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA0MrMtxKBGbMQIbGfkhkr+JAMJzu2vitWqm2fw21Y9DsCWA+KdxDVT8flKs2ZlQIQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK7bXOJRHpd2hdiS1Q+vXCh8z/bmGE8bZDnPSZtp6bS8LPjRt9s0DLjqdouudGhx6A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bc202c13-e0dc-45c4-9bb1-cc43966b5da0",
+                            SecurityStamp = "aa9f0f8e-449f-479c-ba5f-61bcb9a0ba17",
                             TwoFactorEnabled = false,
                             UserName = "user@deviceshop.com"
                         });
@@ -253,15 +253,15 @@ namespace DeviceShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "23389478-6855-4efc-a0f2-b7d9457cce17",
-                            ConcurrencyStamp = "e1f79667-e086-41ae-9281-53953a62f25c",
+                            Id = "0906b4e3-aa0f-4daf-a6f8-f4bfec22ace2",
+                            ConcurrencyStamp = "da547e3f-ff34-4831-bc4f-b34bd8637dab",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4b0a3a58-2a5a-4757-b4ef-4920c3d48ada",
-                            ConcurrencyStamp = "65059483-d564-4299-9590-095511c44209",
+                            Id = "13dccd5c-c65e-4840-a69f-1b659189fb57",
+                            ConcurrencyStamp = "b0fcc693-e59f-4382-8011-e6e25f5cac12",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -358,18 +358,18 @@ namespace DeviceShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f63b95d5-5982-49ba-b357-33265c8af3bd",
-                            RoleId = "23389478-6855-4efc-a0f2-b7d9457cce17"
+                            UserId = "b9b091ba-c95c-45d2-95c3-4d4c6866c3c0",
+                            RoleId = "0906b4e3-aa0f-4daf-a6f8-f4bfec22ace2"
                         },
                         new
                         {
-                            UserId = "f63b95d5-5982-49ba-b357-33265c8af3bd",
-                            RoleId = "4b0a3a58-2a5a-4757-b4ef-4920c3d48ada"
+                            UserId = "b9b091ba-c95c-45d2-95c3-4d4c6866c3c0",
+                            RoleId = "13dccd5c-c65e-4840-a69f-1b659189fb57"
                         },
                         new
                         {
-                            UserId = "7b1310d1-bea0-4650-b3e6-6d417c250595",
-                            RoleId = "4b0a3a58-2a5a-4757-b4ef-4920c3d48ada"
+                            UserId = "13d72687-46a5-4959-8369-86f7fc765683",
+                            RoleId = "13dccd5c-c65e-4840-a69f-1b659189fb57"
                         });
                 });
 

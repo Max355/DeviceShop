@@ -55,24 +55,20 @@ namespace DeviceShop.Controllers
         }
 
         // GET: DeviceController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return View();
+            return View(_context.Devices.Find(id));
         }
 
         // POST: DeviceController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [AutoValidateAntiforgeryToken]
+        
+        public IActionResult ConfirmDelete(int? id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _context.Devices.Remove(_context.Devices.Find(id));
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
         
         public IActionResult Detail(int id)
