@@ -2,6 +2,7 @@
 using DeviceShop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DeviceShop.Controllers
 {
@@ -87,6 +88,16 @@ namespace DeviceShop.Controllers
             {
                 return View();
             }
+        }
+        
+        public IActionResult Detail(int id)
+        {
+            if (id == null) return NotFound();
+
+            var device = _context.Devices
+                .FirstOrDefault(x => x.DeviceId == id);
+            if(device == null) return NotFound();
+            return View(device);
         }
     }
 }
