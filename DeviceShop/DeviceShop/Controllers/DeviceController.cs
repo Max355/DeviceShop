@@ -1,11 +1,14 @@
 ﻿using DeviceShop.Core;
 using DeviceShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeviceShop.Controllers
 {
+    [Authorize]
     public class DeviceController : Controller
     {
         // GET: DeviceController
@@ -28,25 +31,7 @@ namespace DeviceShop.Controllers
         }
 
         // GET: DeviceController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DeviceController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
 
         // GET: DeviceController/Edit/5
         public ActionResult Edit(int id)
@@ -98,6 +83,22 @@ namespace DeviceShop.Controllers
                 .FirstOrDefault(x => x.DeviceId == id);
             if(device == null) return NotFound();
             return View(device);
+        }
+
+        
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Device device)
+        {
+
+            _context.Add(device);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
