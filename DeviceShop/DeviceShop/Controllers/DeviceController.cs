@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DeviceShop.Controllers
 {
-    [Authorize]
+ 
     public class DeviceController : Controller
     {
         // GET: DeviceController
@@ -53,18 +53,20 @@ namespace DeviceShop.Controllers
                 return View();
             }
         }
+     
+        
 
         // GET: DeviceController/Delete/5
-        public IActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             return View(_context.Devices.Find(id));
         }
 
         // POST: DeviceController/Delete/5
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
+     
         
-        public IActionResult ConfirmDelete(int? id)
+        public ActionResult Delete(int? id)
         {
             _context.Devices.Remove(_context.Devices.Find(id));
             _context.SaveChanges();
