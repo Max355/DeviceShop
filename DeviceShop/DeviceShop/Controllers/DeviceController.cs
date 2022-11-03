@@ -33,29 +33,10 @@ namespace DeviceShop.Controllers
         // GET: DeviceController/Create
         
 
-        // GET: DeviceController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+       
 
-        // POST: DeviceController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-     
-        
 
+        [Authorize(Roles = "Admin")]
         // GET: DeviceController/Delete/5
         public ActionResult Delete(int id)
         {
@@ -98,5 +79,33 @@ namespace DeviceShop.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: MovieController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View(_context.Devices.FirstOrDefault(x => x.DeviceId == id));
+        }
+
+        // POST: MovieController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Device device)
+        {
+            if (device.DeviceId == null)
+                return NotFound();
+
+             Device edited = _context.Devices.FirstOrDefault(x => x.DeviceId == device.DeviceId);
+            
+            edited.Title = device.Title;
+            edited.Description = device.Description;
+            edited.Rating = device.Rating;
+            edited.Price = device.Price;
+            edited.Image = device.Image;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+      
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeviceShop.Core.Migrations
 {
-    public partial class delete1 : Migration
+    public partial class edit1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -206,9 +206,9 @@ namespace DeviceShop.Core.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<double>(type: "float", nullable: false),
-                    ColourId = table.Column<int>(type: "int", nullable: true),
-                    CompanyId = table.Column<int>(type: "int", nullable: true),
-                    GuaranteeId = table.Column<int>(type: "int", nullable: true)
+                    ColourId = table.Column<int>(type: "int", nullable: false),
+                    GuaranteeId = table.Column<int>(type: "int", nullable: false),
+                    CompanyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -217,17 +217,20 @@ namespace DeviceShop.Core.Migrations
                         name: "FK_Devices_Colours_ColourId",
                         column: x => x.ColourId,
                         principalTable: "Colours",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Devices_Companys_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companys",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Devices_Guarantees_GuaranteeId",
                         column: x => x.GuaranteeId,
                         principalTable: "Guarantees",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -235,8 +238,8 @@ namespace DeviceShop.Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0906b4e3-aa0f-4daf-a6f8-f4bfec22ace2", "da547e3f-ff34-4831-bc4f-b34bd8637dab", "Admin", "ADMIN" },
-                    { "13dccd5c-c65e-4840-a69f-1b659189fb57", "b0fcc693-e59f-4382-8011-e6e25f5cac12", "User", "USER" }
+                    { "20dc96b5-ee8f-4be0-ad2b-07f2d2b6c67b", "4eec342e-8bb8-4e10-afa5-f35cbf2010aa", "Admin", "ADMIN" },
+                    { "9c0e553f-574b-46f0-a9d4-d274de388a41", "2ca73186-4ef2-41f9-839d-29e7feda9b07", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -244,24 +247,24 @@ namespace DeviceShop.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "13d72687-46a5-4959-8369-86f7fc765683", 0, "c52290b5-244c-4f39-881a-89c947495416", "user@deviceshop.com", true, null, null, false, null, "USER@DEVICESHOP.COM", "USER@DEVICESHOP.COM", "AQAAAAEAACcQAAAAEK7bXOJRHpd2hdiS1Q+vXCh8z/bmGE8bZDnPSZtp6bS8LPjRt9s0DLjqdouudGhx6A==", null, false, "aa9f0f8e-449f-479c-ba5f-61bcb9a0ba17", false, "user@deviceshop.com" },
-                    { "b9b091ba-c95c-45d2-95c3-4d4c6866c3c0", 0, "a48c2ea2-f3f8-42b3-a58b-66b9635ffa93", "admin@deviceshop.com", true, null, null, false, null, "ADMIN@DEVICESHOP.COM", "ADMIN@DEVICESHOP.COM", "AQAAAAEAACcQAAAAENS/ut7Nj62QM2xTP4mlyCVTWu9y/sdasUD8gYdqG7Dkvl1zZh/A23bA7uVEZ0CBoQ==", null, false, "e90bc0fb-499e-4da8-8a24-d0d368a563cf", false, "admin@deviceshop.com" }
+                    { "4b6ec449-5082-4f59-84e0-7eca2a9f20c4", 0, "b99178d3-577b-4801-a67d-4e066fea813e", "user@deviceshop.com", true, null, null, false, null, "USER@DEVICESHOP.COM", "USER@DEVICESHOP.COM", "AQAAAAEAACcQAAAAEKwx3Wns3+1y8MA3Gb9OWhFjmiNSzf09dQ9gkIiLz4KOLUOiX5/sNwkffjpA+3wkdQ==", null, false, "a0a0fa3d-0cd1-481f-84df-38d938a94999", false, "user@deviceshop.com" },
+                    { "843079d0-cce6-448f-bc44-517f49ae379d", 0, "ed050d82-c37e-49af-8832-b80ecc9d36e4", "admin@deviceshop.com", true, null, null, false, null, "ADMIN@DEVICESHOP.COM", "ADMIN@DEVICESHOP.COM", "AQAAAAEAACcQAAAAELjoS8jekwsjl+EHNxvq/eavBD1ReeM52DomqmmGxRqcxbvQZzy4lpsjwB9WpiF6Jg==", null, false, "bb430e7c-2c94-4e7c-9c0f-c0c3d70fb9d8", false, "admin@deviceshop.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "13dccd5c-c65e-4840-a69f-1b659189fb57", "13d72687-46a5-4959-8369-86f7fc765683" });
+                values: new object[] { "9c0e553f-574b-46f0-a9d4-d274de388a41", "4b6ec449-5082-4f59-84e0-7eca2a9f20c4" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "0906b4e3-aa0f-4daf-a6f8-f4bfec22ace2", "b9b091ba-c95c-45d2-95c3-4d4c6866c3c0" });
+                values: new object[] { "20dc96b5-ee8f-4be0-ad2b-07f2d2b6c67b", "843079d0-cce6-448f-bc44-517f49ae379d" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "13dccd5c-c65e-4840-a69f-1b659189fb57", "b9b091ba-c95c-45d2-95c3-4d4c6866c3c0" });
+                values: new object[] { "9c0e553f-574b-46f0-a9d4-d274de388a41", "843079d0-cce6-448f-bc44-517f49ae379d" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

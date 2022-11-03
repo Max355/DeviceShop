@@ -25,7 +25,7 @@
                 <div class="btn-group">
                   <a asp-action="Detail" asp-route-id="@item.DeviceId" type="button" class="btn btn-sm btn-outline-secondary">View</a>
                   <a asp-action="Delete" asp-route-id="@item.DeviceId" type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <a asp-action="Edit" asp-route-id="@item.DeviceId" class="btn btn-warning">Edit</a>
                 </div>
                 <small class="text-muted"></small>
               </div>

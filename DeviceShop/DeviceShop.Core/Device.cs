@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DeviceShop.Models
 {
     public class Device
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int DeviceId { get; set; }
         public string Title { get; set; }
@@ -12,5 +14,8 @@ namespace DeviceShop.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public double Rating { get; set; }
+        public Colour Colour { get; set; }
+        public Guarantee Guarantee { get; set; }
+        public Company Company { get; set; }
     }
 }
