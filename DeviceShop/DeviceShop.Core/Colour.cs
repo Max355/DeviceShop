@@ -1,7 +1,10 @@
-﻿namespace DeviceShop.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DeviceShop.Models
 {
     public class Colour
     {
+        
         public int Id { get; set; }
         public string ColourTitle { get; set; }
 

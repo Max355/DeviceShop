@@ -14,8 +14,6 @@ namespace DeviceShop.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public double Rating { get; set; }
-        public Colour Colour { get; set; }
-        public Guarantee Guarantee { get; set; }
-        public Company Company { get; set; }
+
     }
 }
