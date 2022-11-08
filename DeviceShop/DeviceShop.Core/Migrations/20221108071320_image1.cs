@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeviceShop.Core.Migrations
 {
-    public partial class third : Migration
+    public partial class image1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -204,7 +204,7 @@ namespace DeviceShop.Core.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Rating = table.Column<double>(type: "float", nullable: false),
                     ColourId = table.Column<int>(type: "int", nullable: true),
                     CompanyId = table.Column<int>(type: "int", nullable: true),
@@ -235,8 +235,8 @@ namespace DeviceShop.Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "4ec1080b-b27b-422f-956d-b652a22b20f8", "35ca9840-f22e-4b6e-b58d-d6f091f9189b", "User", "USER" },
-                    { "7deedd89-626d-4554-bfb1-de275c479be8", "a7495aae-f45d-4193-bdba-6091a6903758", "Admin", "ADMIN" }
+                    { "346cc862-8e2c-49fc-b3ba-91d9a65e4601", "d0115f2e-4284-48a2-b231-b7636e41841e", "Admin", "ADMIN" },
+                    { "aa2c7a9e-15c2-4c6c-8f60-e4574514ba3b", "a516dbe1-9dc3-491c-b515-2026a6fce043", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -244,24 +244,24 @@ namespace DeviceShop.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "a40b908f-17e4-4a12-a348-73ff13d8859d", 0, "6d704d48-87c7-4303-98a9-f48245a56848", "user@deviceshop.com", true, null, null, false, null, "USER@DEVICESHOP.COM", "USER@DEVICESHOP.COM", "AQAAAAEAACcQAAAAENgm59FfKxDXc8um1+bftgRncVZxg8VPEOMKnks/8YxtN0hw67wNS3iybOjMvEgomQ==", null, false, "a979d272-c0e0-4e45-a4b2-5fcef682dbfd", false, "user@deviceshop.com" },
-                    { "d048c2c3-c710-497a-ad7e-0b326e1e4e6b", 0, "7132aa00-6b07-49ef-81c5-f07a9b5990cb", "admin@deviceshop.com", true, null, null, false, null, "ADMIN@DEVICESHOP.COM", "ADMIN@DEVICESHOP.COM", "AQAAAAEAACcQAAAAEJOL18u1T5VfSn3ndDD4cV9Q0LJTNB9MWY3vId2v5YPBEBHoFWyMH+SFvx2XcamQWw==", null, false, "9b462c74-6a4d-4336-9258-bf38deba2e29", false, "admin@deviceshop.com" }
+                    { "1e513e0c-bee5-49f5-a818-0391b86567c0", 0, "11560997-5d68-479d-abab-d91f883cd31b", "admin@deviceshop.com", true, null, null, false, null, "ADMIN@DEVICESHOP.COM", "ADMIN@DEVICESHOP.COM", "AQAAAAEAACcQAAAAEFmClAPTqF18iKrhhEIg4e3Xw23IlVwgLFd3vP937Ues1iVFJWvEQ0pgb0hz1hxF0w==", null, false, "81230827-3e4c-44e8-b8d8-2d317d003227", false, "admin@deviceshop.com" },
+                    { "4ca3daf4-f486-4e57-b7e3-3999b4d0ae2a", 0, "39ae1a82-6a7f-408c-9444-22457492b279", "user@deviceshop.com", true, null, null, false, null, "USER@DEVICESHOP.COM", "USER@DEVICESHOP.COM", "AQAAAAEAACcQAAAAEGrH8nG1txJvLBozW5V/7nDjpeslbk7XYvUQ+wYc/GNrNIdSfJ7DqjepPUnPu5YFTQ==", null, false, "68a6c112-9233-4719-8dfa-a6c3c83041f4", false, "user@deviceshop.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "4ec1080b-b27b-422f-956d-b652a22b20f8", "a40b908f-17e4-4a12-a348-73ff13d8859d" });
+                values: new object[] { "346cc862-8e2c-49fc-b3ba-91d9a65e4601", "1e513e0c-bee5-49f5-a818-0391b86567c0" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "4ec1080b-b27b-422f-956d-b652a22b20f8", "d048c2c3-c710-497a-ad7e-0b326e1e4e6b" });
+                values: new object[] { "aa2c7a9e-15c2-4c6c-8f60-e4574514ba3b", "1e513e0c-bee5-49f5-a818-0391b86567c0" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "7deedd89-626d-4554-bfb1-de275c479be8", "d048c2c3-c710-497a-ad7e-0b326e1e4e6b" });
+                values: new object[] { "aa2c7a9e-15c2-4c6c-8f60-e4574514ba3b", "4ca3daf4-f486-4e57-b7e3-3999b4d0ae2a" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -4,7 +4,7 @@
 
 <h3>Create new device</h3>
 <hr />
-<form asp-action="Create" class="form-group">
+<form asp-action="Create" enctype="multipart/form-data" class="form-group">
 	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
@@ -28,7 +28,7 @@
     </div>
       <div class="form-group">
         <label asp-for="Image" class="control-label"></label>
-        <input asp-for="Image" class="form-control" />
+        <input class="form-control" name="picture" id="picture" type="file" />
         <span asp-validation-for="Image" class="text-danger"></span>
     </div>
     <div class="form-group">

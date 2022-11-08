@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
+using System.IO;
 namespace DeviceShop.Controllers
 {
  
@@ -13,10 +13,12 @@ namespace DeviceShop.Controllers
     {
         // GET: DeviceController
         private readonly DeviceShopContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DeviceController(DeviceShopContext context)
+        public DeviceController(DeviceShopContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
         public ActionResult Index()
         {
@@ -72,12 +74,30 @@ namespace DeviceShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Device device)
+        public ActionResult Create(Device device, IFormFile picture)
         {
+            
+          
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "device", picture.FileName);
 
-            _context.Add(device);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+                using (FileStream stream = new FileStream(picturePath, FileMode.Create))
+                    picture.CopyTo(stream);
+
+            _context.Devices.Add(device);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            
+            
+          
+        }
+
+        [HttpGet]
+        public FileContentResult GetImage(int id)
+        {
+            var item = _context.Devices.Find(id);
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, item.Image);
+            var byteArray = System.IO.File.ReadAllBytes(path);
+            return new FileContentResult(byteArray, "image/jpeg");
         }
 
         // GET: MovieController/Edit/5
