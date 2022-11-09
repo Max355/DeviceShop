@@ -83,7 +83,10 @@ namespace DeviceShop.Controllers
                 using (FileStream stream = new FileStream(picturePath, FileMode.Create))
                     picture.CopyTo(stream);
 
-            _context.Devices.Add(device);
+
+                device.Image = Path.Combine("img", "device", picture.FileName);
+
+                _context.Devices.Add(device);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             
